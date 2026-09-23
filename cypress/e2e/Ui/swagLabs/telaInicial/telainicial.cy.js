@@ -123,3 +123,5 @@ it('Cenário 6: Validação da funcionalidade select filter - Exibição de iten
     })
 
 })
+
+});
