@@ -44,7 +44,3 @@ describe('Teste login', () => {
     })
 
 })
-
-//Script de teste
-//Locators(elementos)
-//Comandos
