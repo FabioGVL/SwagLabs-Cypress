@@ -61,69 +61,65 @@ describe ('Teste tela inicial', () => {
     });
 
 
-    it('Cenário 3: Validação da funcionalidade select filter - Exibição de itens de A a Z', () => {
+   it('Cenário 3: Validação da funcionalidade select filter - Exibição de itens de A a Z', () => {
 
-        cy.get('[data-test="product_sort_container"]').select('Name (A to Z)')
+    cy.get('.product_sort_container').select('Name (A to Z)')
 
-        cy.get('#inventory_container .inventory_item_name') 
-        .then($elementos => {  
-          const nomes = [...$elementos].map(elemento => elemento.innerText); 
+    cy.get('#inventory_container .inventory_item_name')
+    .then($elementos => {
+        const nomes = [...$elementos].map(elemento => elemento.innerText)
 
-          const nomesOrdenados = [...nomes].sort((a, b) => a.localeCompare(b));
-          expect(nomes).to.deep.equal(nomesOrdenados);
+        const nomesOrdenados = [...nomes].sort((a, b) => a.localeCompare(b))
+        expect(nomes).to.deep.equal(nomesOrdenados)
+    })
 
-        });
-
-    });
-
-
-    it('Cenário 4: Validação da funcionalidade select filter - Exibição de itens de Z a A', () => {
-
-        cy.get('[data-test="product_sort_container"]').select('Name (Z to A)')
-
-        cy.get('#inventory_container .inventory_item_name') 
-        .then($elementos => {  
-          const nomes = [...$elementos].map(elemento => elemento.innerText); 
-
-          const nomesOrdenados = [...nomes].sort((a, b) => b.localeCompare(a));
-          expect(nomes).to.deep.equal(nomesOrdenados);
-
-        });
-
-    });
+})
 
 
-    it('Cenário 5: Validação da funcionalidade select filter - Exibição de itens de Maior valor a Menor valor', () => {
+it('Cenário 4: Validação da funcionalidade select filter - Exibição de itens de Z a A', () => {
 
-        cy.get('[data-test="product_sort_container"]').select('Price (high to low)')
+    cy.get('.product_sort_container').select('Name (Z to A)')
 
-        cy.get('#inventory_container .inventory_item_name') 
-        .then($elementos => {  
-          const valores = [...$elementos].map(elemento => parseFloat(elemento.innerText.replace('$',''))); 
+    cy.get('#inventory_container .inventory_item_name')
+    .then($elementos => {
+        const nomes = [...$elementos].map(elemento => elemento.innerText)
 
-          const valoresOrdenados = [...valores].sort((a, b) => b - a);
-          expect(valores).to.deep.equal(valoresOrdenados);
+        const nomesOrdenados = [...nomes].sort((a, b) => b.localeCompare(a))
+        expect(nomes).to.deep.equal(nomesOrdenados)
+    })
 
-        });
-
-    });
-
-
-    it('Cenário 6: Validação da funcionalidade select filter - Exibição de itens de Menor valor a Maior valor', () => {
-
-        cy.get('[data-test="product_sort_container"]').select('Price (low to high)')
-
-        cy.get('#inventory_container .inventory_item_name') 
-        .then($elementos => {  
-          const valores = [...$elementos].map(elemento => parseFloat(elemento.innerText.replace('$',''))); 
-
-          const valoresOrdenados = [...valores].sort((a, b) => a - b);
-          expect(valores).to.deep.equal(valoresOrdenados);
-
-        });
+})
 
 
-    });
+it('Cenário 5: Validação da funcionalidade select filter - Exibição de itens de Maior valor a Menor valor', () => {
 
-    
-});
+    cy.get('.product_sort_container').select('Price (high to low)')
+
+    cy.get('#inventory_container .inventory_item_price')
+    .then($elementos => {
+        const valores = [...$elementos].map(elemento =>
+            parseFloat(elemento.innerText.replace('$', ''))
+        )
+
+        const valoresOrdenados = [...valores].sort((a, b) => b - a)
+        expect(valores).to.deep.equal(valoresOrdenados)
+    })
+
+})
+
+
+it('Cenário 6: Validação da funcionalidade select filter - Exibição de itens de Menor valor a Maior valor', () => {
+
+    cy.get('.product_sort_container').select('Price (low to high)')
+
+    cy.get('#inventory_container .inventory_item_price')
+    .then($elementos => {
+        const valores = [...$elementos].map(elemento =>
+            parseFloat(elemento.innerText.replace('$', ''))
+        )
+
+        const valoresOrdenados = [...valores].sort((a, b) => a - b)
+        expect(valores).to.deep.equal(valoresOrdenados)
+    })
+
+})
