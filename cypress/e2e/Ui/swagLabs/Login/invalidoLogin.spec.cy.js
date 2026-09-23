@@ -2,18 +2,18 @@ import elem from '../../../../support/elements';
 
 describe('Teste login', () => {
 
-    beforeEach( () => {
+    beforeEach(() => {
         cy.visit('/')
-        
     })
 
-    
+
     it('Cenário Inválido 1: Login com dados inválidos - Usuário correto & senha inválida', () => {
 
         cy.get(elem.campoUsuario).type(Cypress.env('usuario'))
         cy.get(elem.campoSenha).type(Cypress.env('senha_invalida'))
+        cy.get(elem.botaoLogin).click()
         cy.get(elem.titulo_products).should('not.exist')
-               
+
     })
 
 
@@ -21,6 +21,7 @@ describe('Teste login', () => {
 
         cy.get(elem.campoUsuario).type(Cypress.env('usuario_invalido'))
         cy.get(elem.campoSenha).type(Cypress.env('senha'))
+        cy.get(elem.botaoLogin).click()
         cy.get(elem.titulo_products).should('not.exist')
 
     })
@@ -28,19 +29,19 @@ describe('Teste login', () => {
 
     it('Cenário Inválido 3: Login com dados inválidos - Login com campo usuário vazio', () => {
 
-        cy.get(elem.campoUsuario).type(Cypress.env('usuario_vazio'))
         cy.get(elem.campoSenha).type(Cypress.env('senha'))
+        cy.get(elem.botaoLogin).click()
         cy.get(elem.titulo_products).should('not.exist')
-               
+
     })
 
 
     it('Cenário Inválido 4: Login com dados inválidos - Login com campo senha vazio', () => {
 
         cy.get(elem.campoUsuario).type(Cypress.env('usuario'))
-        cy.get(elem.campoSenha).type(Cypress.env('senha_vazio'))
+        cy.get(elem.botaoLogin).click()
         cy.get(elem.titulo_products).should('not.exist')
-               
+
     })
 
 
@@ -48,6 +49,7 @@ describe('Teste login', () => {
 
         cy.get(elem.campoUsuario).type(Cypress.env('usuario_invalido2'))
         cy.get(elem.campoSenha).type(Cypress.env('senha'))
+        cy.get(elem.botaoLogin).click()
         cy.get(elem.titulo_products).should('not.exist')
 
     })
@@ -57,6 +59,7 @@ describe('Teste login', () => {
 
         cy.get(elem.campoUsuario).type(Cypress.env('usuario'))
         cy.get(elem.campoSenha).type(Cypress.env('senha_invalida2'))
+        cy.get(elem.botaoLogin).click()
         cy.get(elem.titulo_products).should('not.exist')
 
     })
@@ -66,6 +69,7 @@ describe('Teste login', () => {
 
         cy.get(elem.campoUsuario).type(Cypress.env('usuario_invalido'))
         cy.get(elem.campoSenha).type(Cypress.env('senha'))
+        cy.get(elem.botaoLogin).click()
         cy.get(elem.titulo_products).should('not.exist')
 
     })
@@ -75,6 +79,7 @@ describe('Teste login', () => {
 
         cy.get(elem.campoUsuario).type(Cypress.env('usuario'))
         cy.get(elem.campoSenha).type(Cypress.env('senha_invalida3'))
+        cy.get(elem.botaoLogin).click()
         cy.get(elem.titulo_products).should('not.exist')
 
     })
@@ -84,6 +89,7 @@ describe('Teste login', () => {
 
         cy.get(elem.campoUsuario).type(Cypress.env('usuario_maiusculo'))
         cy.get(elem.campoSenha).type(Cypress.env('senha'))
+        cy.get(elem.botaoLogin).click()
         cy.get(elem.titulo_products).should('not.exist')
 
     })
@@ -93,6 +99,7 @@ describe('Teste login', () => {
 
         cy.get(elem.campoUsuario).type(Cypress.env('usuario'))
         cy.get(elem.campoSenha).type(Cypress.env('senha_maiusculo'))
+        cy.get(elem.botaoLogin).click()
         cy.get(elem.titulo_products).should('not.exist')
 
     })
@@ -102,13 +109,9 @@ describe('Teste login', () => {
 
         cy.get(elem.campoUsuario).type(Cypress.env('usuario_maiusculo'))
         cy.get(elem.campoSenha).type(Cypress.env('senha_maiusculo'))
+        cy.get(elem.botaoLogin).click()
         cy.get(elem.titulo_products).should('not.exist')
 
     })
-    
 
 })
-
-//Script de teste
-//Locators(elementos)
-//Comandos
